@@ -6,8 +6,8 @@
     </div>
     <div class="botton">
       <div class="price">
-        <span>10.00元</span>
-        <span>订单满100.00元使用</span>
+        <div><span style="font-size:30px">10.00元</span></div>
+        <div><span>订单满100.00元使用</span></div>
       </div>
       <van-button round type="primary" class="button-set">立即领取</van-button>
       <div class="tip">
@@ -15,15 +15,23 @@
         <p>请在2022.07.12 00:00:00~2022.07.13 23:59:59时间范围内领取</p>
       </div>
       <van-divider class="divider-set" dashed></van-divider>
-      <span>有效期</span>
+      <div class="classifyItem">
+        <p>有效期</p>
+        <p>领取<span>2</span>天后有效</p>
+      </div>
       <van-divider class="divider-set" />
-      <span>使用门店</span>
+      <div class="classifyItem">
+        <p>适用商户及门店</p>
+        <p><a href="#">查看商户及门店
+            <van-icon name="arrow" />
+          </a></p>
+      </div>
       <van-divider class="divider-set" />
+      <div class="classifyItem">使用规则</div>
       <div class="rule-detail">
-        <span>(一）活动时间</span>
-        <p>1、北京时间：2022年07月12日
-          00:00:00.2022F07#13 E 23:59:59,</p>
-        <span>(二)参与条件</span>
+        <span>(一) 活动时间</span>
+        <p>1、北京时间：2022年07月12日00:00:00.2022F07#13 E 23:59:59,</p>
+        <span>(二) 参与条件</span>
         <p>1、本活动仅限中华人民共和国境内（仅为本规
           则之目的，为避免疑义，不包括香港特别行政
           区、澳门特别行政区和台湾地区）
@@ -43,7 +51,7 @@
           4、具体参与条件以各银行实际活动开展情况为
           准
         </p>
-        <span>(三）活动规则</span>
+        <span>(三) 活动规则</span>
         <p>
           1、活动期间，符合本活动参与条件的用户在指
           定的活动页面，可以领取相关活动银行支付宝快
@@ -86,30 +94,28 @@ body {
 
 .coupon-container {
   text-align: center;
-  margin: 50px 16px;
+  margin: 50px 10px;
 
   .top {
     padding-left: 10px;
     line-height: 50px;
     text-align: left;
     height: 50px;
-    background-color: rgb(236, 233, 233);
+    background-color: rgb(243, 238, 238);
     border-radius: 5px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
   }
 
   .botton {
-    padding: 0 10px;
+    padding: 5px 10px 5px;
     border-radius: 5px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    padding-top: 10px;
     background-color: white;
 
     .price {
-      span {
-        display: block;
+      div {
         margin: 10px 0;
       }
     }
@@ -122,7 +128,7 @@ body {
 
     .tip {
       p {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
 
@@ -131,20 +137,39 @@ body {
       border-color: rgb(218, 218, 218);
     }
 
-    >span {
-      display: block;
+    .classifyItem {
       text-align: left;
-      color: red;
+      font-weight: bold;
+      font-size: 16px;
+
+      p {
+        display: block;
+      }
+
+      p:first-child {
+        border-left: 4px solid #3876fe;
+        padding-left: 8px;
+      }
+
+      p:last-child {
+        font-size: 14px;
+        font-weight: normal;
+        padding-left: 12px;
+      }
     }
 
     .rule-detail {
+      margin-top: 10px;
       text-align: left;
       font-size: 14px;
-      span{
-        text-indent: 2em;
+
+      span {
+        display: block;
+        text-indent: 1em;
       }
-      p{
-        margin:0;
+
+      p {
+        margin: 0;
       }
     }
   }
