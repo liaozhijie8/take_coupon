@@ -32,7 +32,9 @@
           </a></p>
       </div>
       <van-divider class="divider-set" />
-      <div class="classifyItem">使用规则</div>
+      <div class="classifyItem">
+        <p style="font-weight:bold;font-size:16px">使用规则</p>
+      </div>
       <div class="rule-detail">
         <span>(一) 活动时间</span>
         <p>1、北京时间：2022年07月12日00:00:00.2022F07#13 E 23:59:59,</p>
@@ -95,7 +97,7 @@ export default defineComponent({
     // 监视屏幕滑动距离
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > 50) {
+      if (scrollTop > 80) {
         isDown.value = 'navbarDown'
       } else {
         isDown.value = ''
@@ -150,19 +152,25 @@ body {
     line-height: 50px;
     text-align: left;
     height: 50px;
-    background-color: rgb(243, 238, 238);
     border-radius: 5px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    background: linear-gradient(135deg, transparent 0px, rgb(243, 238, 238) 0) top left,
+      linear-gradient(-135deg, transparent 0px, rgb(243, 238, 238) 0) top right,
+      linear-gradient(-45deg, transparent 5px, rgb(243, 238, 238) 0) bottom right,
+      linear-gradient(45deg, transparent 5px, rgb(243, 238, 238) 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
   }
 
   // 盒子下部分
   .botton {
     padding: 5px 10px 5px;
     border-radius: 5px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: white;
+    background: linear-gradient(135deg, transparent 5px, white 0) top left,
+      linear-gradient(-135deg, transparent 5px, white 0) top right,
+      linear-gradient(-45deg, transparent 0px, white 0) bottom right,
+      linear-gradient(45deg, transparent 0px, white 0) bottom left;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
 
     .price {
       div {
