@@ -104,7 +104,7 @@ body {
     border-radius: 5px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    padding-top: 20px;
+    padding-top: 10px;
     background-color: white;
 
     .price {
@@ -139,6 +139,7 @@ body {
 
     .rule-detail {
       text-align: left;
+      font-size: 14px;
       span{
         text-indent: 2em;
       }
