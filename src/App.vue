@@ -4,6 +4,6 @@
 
 <style lang="less">
 body{
-  background-color: red;
+  background-color: #e64d4d;
 }
 </style>
