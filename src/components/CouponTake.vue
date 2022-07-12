@@ -1,8 +1,12 @@
 <template>
-  <van-nav-bar title="红包领取页" fixed left-arrow class="navbar-set" @click-left="onClickLeft" />
+  <van-nav-bar :border="false" safe-area-inset-top fixed left-arrow class="navbar-set" @click-left="onClickLeft">
+    <template #title>
+      <span style="color:white">红包领取页</span>
+    </template>
+  </van-nav-bar>
   <div class="coupon-container">
     <div class="top">
-      <van-icon name="gold-coin-o" />中国银行
+      <van-icon name="gold-coin-o" /><span>中国银行</span>
     </div>
     <div class="botton">
       <div class="price">
@@ -85,9 +89,11 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-// .navbar-set{
-//   background-color: rgba(0, 0, 0, 0);
-// }
+.navbar-set {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
 body {
   background-color: red;
 }
