@@ -1,19 +1,20 @@
 <template>
-  <van-nav-bar :border="false" safe-area-inset-top fixed left-arrow class="navbar-set" @click-left="onClickLeft">
+  <van-nav-bar :border="false" safe-area-inset-top fixed left-arrow class="navbar-set" :class="isDown"
+    @click-left="onClickLeft">
     <template #title>
-      <span style="color:white">红包领取页</span>
+      <span>红包领取页</span>
     </template>
   </van-nav-bar>
   <div class="coupon-container">
     <div class="top">
-      <van-icon name="gold-coin-o" /><span>中国银行</span>
+      <van-icon name="gold-coin-o" /><span style="padding-left:5px;">中国银行</span>
     </div>
     <div class="botton">
       <div class="price">
         <div><span style="font-size:30px">10.00元</span></div>
         <div><span>订单满100.00元使用</span></div>
       </div>
-      <van-button round type="primary" class="button-set">立即领取</van-button>
+      <van-button round type="primary" class="button-set" @click="takeCoupon">立即领取</van-button>
       <div class="tip">
         <p>此红包为银行自行发放，仅限该银行渠道支付时使用</p>
         <p>请在2022.07.12 00:00:00~2022.07.13 23:59:59时间范围内领取</p>
@@ -73,35 +74,77 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
+import { Toast } from 'vant'
 
 export default defineComponent({
   name: 'coupon-take',
   setup() {
+    const isDown = ref()
+    /* 顶栏返回操作 */
     const onClickLeft = () => {
       alert('返回上级')
     }
+    /* 领取弹窗消息 */
+    const takeCoupon = () => {
+      Toast.loading({
+        message: '领取中...',
+        forbidClick: true
+      })
+    }
+    // 监视屏幕滑动距离
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      if (scrollTop > 50) {
+        isDown.value = 'navbarDown'
+      } else {
+        isDown.value = ''
+      }
+    }
+    const countDistance = onMounted(() => {
+      window.addEventListener('scroll', handleScroll)
+    })
     return {
-      onClickLeft
+      onClickLeft,
+      takeCoupon,
+      handleScroll,
+      countDistance,
+      isDown
     }
   }
 })
 </script>
 
 <style lang="less" scoped>
+// 顶栏领取区域
 .navbar-set {
   background-color: rgba(0, 0, 0, 0);
-  color: white;
+
+  span {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.navbarDown {
+  background-color: white;
+
+  span {
+    color: black;
+    font-weight: bold;
+  }
 }
 
 body {
   background-color: red;
 }
 
+// 优惠券总盒子
 .coupon-container {
   text-align: center;
   margin: 50px 10px;
 
+  // 盒子上部分
   .top {
     padding-left: 10px;
     line-height: 50px;
@@ -113,6 +156,7 @@ body {
     border-bottom-right-radius: 15px;
   }
 
+  // 盒子下部分
   .botton {
     padding: 5px 10px 5px;
     border-radius: 5px;
